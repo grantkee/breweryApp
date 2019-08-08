@@ -5,12 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Brewery App</title>
+    <!-- below from openlayers site to get map -- https://openlayers.org/en/latest/doc/quickstart.html -->
+    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
+    <style>
+      .map {
+        height: 400px;
+        width: 100%;
+      }
+    </style>
+    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+    <!-- end of openlayers input -->
 </head>
 <body>
     <div id = "container">
-        <button onclick="getBeer()">Get Beer</button>
-        <h3>All Posts</h3>
-        <ul id='all-posts'></ul>
+        <button id="find-location" onclick="getLocation()" onclick="getBeer()">Get Beer</button>
+        <p id="my-coordinates"></p>
+        
+        <!-- below from openlayers site to get map -- https://openlayers.org/en/latest/doc/quickstart.html -->
+        <h2>My Map</h2>
+        <div id="map" class="map"></div>
+        <!-- end of openlayers input -->
+        
+        <!-- <h3>All Posts</h3> -->
+        <!-- <ul id='all-posts'></ul> -->
     </div> 
     <script src="./main.js"></script>
 </body>
