@@ -1,3 +1,8 @@
+- get current location
+- 
+
+########
+
 brewerydb.com info on geopoint search: https://www.brewerydb.com/developers/docs/endpoint/search-geopoint
 
 Google Maps alternatives: https://nordicapis.com/5-powerful-alternatives-to-google-maps-api/
@@ -13,4 +18,7 @@ jQuery video - using same API but different version: https://www.youtube.com/wat
 PROBABLY WON'T NEED THESE:
 
 How to add Google Map into website (still need API key after this): https://developers.google.com/maps/documentation/javascript/adding-a-google-map
+
+#######
+
 
