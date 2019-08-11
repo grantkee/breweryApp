@@ -1,45 +1,46 @@
 // require('dotenv').config();
 
 let checkFetch = function(response) {
-    if (!response.ok) {
-        throw Error(response.statusText + ' - ' + response.url);
-    }
-    return response;
+  if (!response.ok) {
+    throw Error(response.statusText + ' - ' + response.url);
+  }
+  return response;
 } 
 
-// /search/geo/point?lat=35.772096&lng=-78.638614
+`https://sandbox-api.brewerydb.com/v2/search/geo/point?lat=${lat}&lng=${lng}`
 
-var myLocation = document.getElementById("my-coordinates")
+let myLocation = document.getElementById("my-coordinates")
 
 function getLocation() {
-    if(navigator.geolocation){
-      navigator.geolocation.getCurrentPosition(displayPosition)
-    } else {
-     myLocation.innerHTML = "Not available"
-    }
+  if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(displayPosition)
+  } else {
+    alert("Sorry, location is not available. Stay sober, friends.")
+  }
 }
 
 function displayPosition(position) {
-    const lat = position.coords.latitude;
-    const lng = position.coords.longitude;
+  const lat = position.coords.latitude;
+  const lng = position.coords.longitude;
+  let loc = lat + ", " + lng;
 
-    myLocation.innerHTML = " Latitude: " + lat + ", " + "Longitude: " + lng;
+  myLocation.innerHTML = " Latitude: " + lat + ", " + "Longitude: " + lng;
 }
 
 function createMap() {
-    let loc = lat + ", " + lng;
-    var map = new ol.Map({
-        target: document.querySelector('map'),
-        layers: [
-          new ol.layer.Tile({
-            source: new ol.source.OSM()
-          })
-        ],
-        view: new ol.View({
-          center: ol.proj.fromLonLat([loc]),
-          zoom: 4
-        })
-      });
+    
+  var map = new ol.Map({
+    target: document.querySelector('map'),
+    layers: [
+      new ol.layer.Tile({
+        source: new ol.source.OSM()
+      })
+    ],
+    view: new ol.View({
+      center: ol.proj.fromLonLat([lat, lng]),
+      zoom: 4
+    })
+  });
     
     // ! NEXT TWO LINES DEPEND ON GOOGLE MAPS API WORKING !
     // let map = new google.maps.Map(document.getElementById(#map), {zoom: 4, center: loc});
@@ -55,7 +56,10 @@ function getBeer(){
     .then((result) => result.json())
     .then((data) => {
         // look at last line of code in dashboard.js -- calls button for getting location
-
+      // let output = `<h2>Beer Near Me!</h2>`
+      // data.results.forEach((function(user) {
+        // output += ``
+      // }))
 
     
     })
