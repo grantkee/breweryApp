@@ -47,14 +47,14 @@ function getBeer(position){
   let lat = position.coords.latitude;
   let lng = position.coords.longitude;
   console.log(lat + ", " + lng);
-  fetch(`https://sandbox-api.brewerydb.com/v2/search/geo/point?lat=${lat}&lng=${lng}&totalResults&key=d2bcebda18ee4340157eff0fc2192936`)
+  fetch(`https://cors-anywhere.herokuapp.com/https://sandbox-api.brewerydb.com/v2/search/geo/point?lat=${lat}&lng=${lng}&key=d2bcebda18ee4340157eff0fc2192936`)
     // .then(checkFetch)
     // console.log("id is working")
     // .then((result) => result.json())
     .then((data) => {
       // let output = `<h2>Results: ${totalResults}</h2>`;
       console.log(data);
-
+      document.innerHTML = data;
     
     })
     // .catch(function(err){
