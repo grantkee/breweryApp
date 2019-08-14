@@ -24,7 +24,7 @@ function createMap() {
       mapImage.innerHTML =`
       <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=${lng}%2C${lat}%2C${lng}%2C${lat}&amp;layer=mapnik" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=18/${lat}/${lng}">View Larger Map</a></small>
       `
-      mapLink.innerHTML = `Latitude: ${lat} °, Longitude: ${lng} °`;
+      mapLink.innerHTML = `Latitude: ${lat}°, Longitude: ${lng}°`;
       getBeer(position);
   }
   function error() {
@@ -42,26 +42,26 @@ document.querySelector('#find-user').addEventListener('click', createMap);
 
 // console.log(lat + ", " + lng)
 
+function getBeer(){
+  if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(position => {
+      let lat = position.coords.latitude;
+      let lng = position.coords.longitude;
+      const proxy = 'https://cors-anywhere.herokuapp.com/';
+      let api = `${proxy}https://sandbox-api.brewerydb.com/v2/search/geo/point?lat=${lat}&lng=${lng}&key=d2bcebda18ee4340157eff0fc2192936`;
 
-function getBeer(position){
-  let lat = position.coords.latitude;
-  let lng = position.coords.longitude;
-  console.log(lat + ", " + lng);
-  fetch(`https://cors-anywhere.herokuapp.com/https://sandbox-api.brewerydb.com/v2/search/geo/point?lat=${lat}&lng=${lng}&key=d2bcebda18ee4340157eff0fc2192936`)
-    // .then(checkFetch)
-    // console.log("id is working")
-    // .then((result) => result.json())
-    .then((data) => {
-      // let output = `<h2>Results: ${totalResults}</h2>`;
-      console.log(data);
-      document.innerHTML = data;
-    
+      fetch(api)
+        .then(res => {
+          return res.json();
+        })
+        .then(data => {
+          console.log(data)
+          document.getElementById('results').innerHTML = data.data[0].name;
+
+        })
     })
-    // .catch(function(err){
-    //     console.log('Error');
-    //     console.log(err);
-    // })
-};
+  }
+} 
 
 
 
@@ -73,6 +73,26 @@ function getBeer(position){
 
 
 
+
+// function getBeer(position){
+//   let lat = position.coords.latitude;
+//   let lng = position.coords.longitude;
+//   console.log(lat + ", " + lng);
+//   fetch(`https://cors-anywhere.herokuapp.com/https://sandbox-api.brewerydb.com/v2/search/geo/point?lat=${lat}&lng=${lng}&key=d2bcebda18ee4340157eff0fc2192936`)
+//     // .then(checkFetch)
+//     // console.log("id is working")
+//     // .then((result) => result.json())
+//     .then((data) => {
+//       // let output = `<h2>Results: ${totalResults}</h2>`;
+//       console.log(data);
+//       document.innerHTML = data;
+    
+//     })
+//     // .catch(function(err){
+//     //     console.log('Error');
+//     //     console.log(err);
+//     // })
+// };
 
 
 // function getAPI(){
