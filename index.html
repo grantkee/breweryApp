@@ -17,18 +17,20 @@
     <!-- end of openlayers input -->
 </head>
 <body>
-    <div id = "container">
-        <button id="find-location" onclick="getLocation()" onclick="getBeer()">Get Beer</button>
-        <p id="my-coordinates"></p>
-        
-        <!-- below from openlayers site to get map -- https://openlayers.org/en/latest/doc/quickstart.html -->
-        <h2>My Map</h2>
-        <div id="map" class="map"></div>
-        <!-- end of openlayers input -->
-        
-        <!-- <h3>All Posts</h3> -->
-        <!-- <ul id='all-posts'></ul> -->
-    </div> 
+  <div id="container">
+    <button id="find-user">Beer Me!</button><br/>
+      <p id="status"></p>
+      <div id="main-container">
+        <div id="map-container">
+          <div id="map-image"></div>
+          <a id="map-link" target="_blank"></a>  
+        </div>
+        <div id="results-container">
+          <!-- total results at top in p tag -->
+          <!-- css grid for image on left and name, address, hours, website on right -->
+        </div>
+      </div>
+  </div>
     <script src="./main.js"></script>
 </body>
 </html>
